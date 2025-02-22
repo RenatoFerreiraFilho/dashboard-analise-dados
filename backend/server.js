@@ -8,22 +8,33 @@ app.use(cors());
 app.use(express.json());
 
 // 🔹 Conexão com o MongoDB
-const MONGO_URI = process.env.MONGO_URI || "mongodb://admin:admin@mongo_db:27017/dashboard?authSource=admin";
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
     .connect(MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-    .then(() => console.log("✅ MongoDB conectado com sucesso!"))
-    .catch((err) => console.error("❌ Erro ao conectar ao MongoDB:", err));
+    .then(() => console.log("✅ Conectado ao MongoDB Atlas!"))
+    .catch((err) => console.error("❌ Erro ao conectar ao MongoDB Atlas:", err));
 
-// 🔹 Rota inicial para teste
+// Rotas de autenticação
+const { authRouter, verifyToken } = require("./routes/auth");
+app.use("/api/auth", authRouter);
+
+// Rota de teste protegida
+app.get("/api/protected", verifyToken, (req, res) => {
+    res.json({ message: "Acesso autorizado a rota protegida!", user: req.user });
+});
+
+// Rota de upload de arquivos
+const uploadRoutes = require("./routes/upload");
+app.use("/api", uploadRoutes);
+
 app.get("/", (req, res) => {
     res.send("API do Dashboard rodando 🚀");
 });
 
-// 🔹 Iniciando o servidor
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

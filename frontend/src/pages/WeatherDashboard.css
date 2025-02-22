@@ -1,0 +1,37 @@
+.weather-dashboard {
+    background-size: cover; /* Faz a imagem preencher toda a tela */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    background-attachment: fixed; /* Mantém o fundo fixo ao rolar a página */
+    color: white;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative; /* Garante que os elementos sejam posicionados corretamente */
+}
+
+.chart-container {
+    width: 80%;
+    max-width: 800px;
+    background: #3a3a3a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.weather-info {
+    background: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 30px; /* Espaçamento extra abaixo da caixa */
+    color: white;
+}

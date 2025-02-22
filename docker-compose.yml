@@ -6,6 +6,9 @@ services:
             - "4000:4000"
         env_file:
             - ./backend/.env
+        volumes:
+            - ./backend:/app
+            - /app/node_modules
         depends_on:
             - mongo
 
@@ -13,6 +16,9 @@ services:
         build: ./frontend
         ports:
             - "5173:5173"
+        volumes:
+            - ./frontend:/app
+            - /app/node_modules
         depends_on:
             - backend
 

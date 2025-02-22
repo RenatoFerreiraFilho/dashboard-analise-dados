@@ -1,0 +1,57 @@
+.home-container {
+    background-image: url("/images/home-background.webp");
+    background-size: cover; /* Preenche toda a tela sem distorcer */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Mantém o fundo fixo ao rolar */
+
+    width: 100vw; /* Ocupa 100% da largura */
+    height: 100vh; /* Ocupa 100% da altura */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0; /* Remove qualquer margem extra */
+}
+
+/* Título principal */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Lista de Dashboards */
+.dashboard-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Estilo dos botões de navegação */
+.dashboard-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 60px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-option:hover {
+    transform: scale(1.05);
+    background: #0056b3;
+}
