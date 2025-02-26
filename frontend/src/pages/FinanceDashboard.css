@@ -12,6 +12,22 @@
 h1 {
     margin-bottom: 20px;
 }
+.back-button {
+    position: fixed; /* Alterado de absolute para fixed */
+    top: 20px;
+    right: 20px;
+
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
 
 .filters {
     display: flex;

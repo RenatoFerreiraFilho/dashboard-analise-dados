@@ -4,13 +4,19 @@
     background-repeat: no-repeat; /* Impede que a imagem se repita */
     background-attachment: fixed; /* Mantém o fundo fixo ao rolar a página */
     color: white;
-    min-height: 100vh;
-    width: 100vw;
+
+    min-height: 100vh; /* Mantém a rolagem vertical caso necessário */
+    width: 100vw; /* Mantém a largura fixa na tela */
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     padding: 20px;
     position: relative; /* Garante que os elementos sejam posicionados corretamente */
+
+    overflow-x: hidden; /* REMOVE APENAS A ROLAGEM LATERAL */
+    overflow-y: auto; /* MANTÉM A ROLAGEM VERTICAL */
 }
 
 .chart-container {
@@ -34,4 +40,49 @@
     margin-top: 20px;
     margin-bottom: 30px; /* Espaçamento extra abaixo da caixa */
     color: white;
+}
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-container input {
+    flex: 1; /* Faz o input crescer junto com o container */
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #ffffff88; /* Borda semi-transparente */
+    background: rgba(255, 255, 255, 0.2); /* Fundo semi-transparente */
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    width: 250px; /* Mantém o tamanho proporcional */
+}
+
+/* Efeito ao focar no input */
+.search-container input:focus {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.back-button {
+    position: fixed; /* Alterado de absolute para fixed */
+    top: 20px;
+    right: 20px;
+
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.4);
 }

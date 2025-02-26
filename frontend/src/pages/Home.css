@@ -1,5 +1,5 @@
 .home-container {
-    background-image: url("/images/home-background.webp");
+    background-image: url("/images/home-background.jpg");
     background-size: cover; /* Preenche toda a tela sem distorcer */
     background-position: center;
     background-repeat: no-repeat;
