@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./CountryDashboard.css";
 
 const CountryDashboard = () => {
@@ -37,13 +38,13 @@ const CountryDashboard = () => {
 
             <div className="countries-list">
                 {filteredCountries.map((country) => (
-                    <div key={country.cca3} className="country-card">
+                    <Link to={`/countries/${country.cca3}`} key={country.cca3} className="country-card" style={{ textDecoration: "none", color: "inherit" }}>
                         <img src={country.flags.svg} alt={`Bandeira de ${country.name.common}`} />
                         <h3>{country.name.common}</h3>
                         <p>População: {country.population.toLocaleString()}</p>
                         <p>Área: {country.area.toLocaleString()} km²</p>
                         <p>Região: {country.region}</p>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

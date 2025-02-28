@@ -1,5 +1,5 @@
 .country-dashboard {
-    background-image: url("/images/countries-background.jpg");
+    background-image: url("/images/default.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,4 +45,25 @@
     width: 100px;
     height: auto;
     border-radius: 5px;
+}
+
+.country-card {
+    text-decoration: none; /* Remove o sublinhado */
+    color: white; /* Mantém o texto branco */
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.country-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.country-card h3,
+.country-card p {
+    color: white; /* Garante que o texto fique branco */
+    margin: 5px 0;
 }
