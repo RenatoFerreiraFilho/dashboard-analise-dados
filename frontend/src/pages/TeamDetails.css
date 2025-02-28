@@ -1,0 +1,38 @@
+.team-details {
+    text-align: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100vw;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Botão de voltar fixo no topo direito */
+.team-back-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Ajuste na caixa de informações */
+.team-info {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+/* Estilização da logo do time */
+.team-logo {
+    width: 150px;
+    height: auto;
+    margin: 10px 0;
+}

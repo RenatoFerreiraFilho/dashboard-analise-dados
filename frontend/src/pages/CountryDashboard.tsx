@@ -29,7 +29,7 @@ const CountryDashboard = () => {
     return (
         <div className="country-dashboard">
             <button className="back-button" onClick={() => window.history.back()}>
-                Voltar
+                ⬅ Voltar
             </button>
 
             <h1>Dashboard de Países 🌍</h1>

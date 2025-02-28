@@ -25,7 +25,7 @@ const CountryDetails = () => {
     return (
         <div className="country-details">
             <button className="back-button" onClick={() => window.history.back()}>
-                Voltar
+                ⬅ Voltar
             </button>
 
             <h1>{country.name.common}</h1>

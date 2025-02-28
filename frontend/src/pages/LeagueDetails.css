@@ -1,0 +1,68 @@
+/* Fundo da página */
+.league-details {
+    text-align: center;
+    padding: 20px;
+    background-image: url("/images/default.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100vw;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Botão de Voltar (fixo no canto superior direito) */
+.league-back-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Estilização do nome da liga */
+.league-details h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Estilo da tabela */
+.teams-table {
+    margin-top: 20px;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.teams-table h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.teams-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.teams-table th,
+.teams-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.teams-table th {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
+
+.teams-table tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
