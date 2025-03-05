@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { fetchLeagueTeams } from "../services/sportsAPI";
 import "./LeagueDetails.css";
+import { GiConsoleController } from "react-icons/gi";
 
 const LeagueDetails = () => {
     const { leagueId } = useParams();

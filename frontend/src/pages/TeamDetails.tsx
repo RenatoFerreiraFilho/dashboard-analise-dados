@@ -17,7 +17,7 @@ const TeamDetails = () => {
     }, [teamName]);
 
     return (
-        <div className="team-details" style={{ backgroundImage: `url(${team?.strFanart1 || "/images/default.webp"})` }}>
+        <div className="team-details" style={{ backgroundImage: `url(${team?.strFanart1 || "/images/team-page-b.jpg"})` }}>
             <div className="team-back-container">
                 <button className="team-back-button" onClick={() => navigate(-1)}>
                     ⬅ Voltar

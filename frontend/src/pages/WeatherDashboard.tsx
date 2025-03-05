@@ -9,14 +9,14 @@ const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 // Mapear imagens de fundo para diferentes tipos de clima
 const weatherBackgrounds: { [key: string]: string } = {
-    Clear: "/images/sunny.webp",
-    Clouds: "/images/cloudy.webp",
-    Rain: "/images/rainy.webp",
-    Snow: "/images/snowy.webp",
-    Mist: "/images/foggy.webp",
-    Fog: "/images/foggy.webp",
-    Thunderstorm: "/images/thunderstorm.webp",
-    Drizzle: "/images/drizzle.webp",
+    Clear: "/images/sunny.jpg",
+    Clouds: "/images/cloudy.jpg",
+    Rain: "/images/rainy.jpg",
+    Snow: "/images/snowy.jpg",
+    Mist: "/images/foggy.jpg",
+    Fog: "/images/foggy.jpg",
+    Thunderstorm: "/images/thunderstorm.jpg",
+    Drizzle: "/images/drizzle.jpg",
     Default: "/images/default.webp", // Fundo padrão caso o clima não seja identificado
 };
 
