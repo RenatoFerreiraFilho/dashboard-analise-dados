@@ -54,4 +54,5 @@ h1 {
 .dashboard-option:hover {
     transform: scale(1.05);
     background: #0056b3;
+    color: white;
 }

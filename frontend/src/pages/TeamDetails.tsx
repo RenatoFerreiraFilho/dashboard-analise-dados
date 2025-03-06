@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchTeamDetails } from "../services/sportsAPI";
 import "./TeamDetails.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const TeamDetails = () => {
     const { teamName } = useParams();
@@ -39,7 +40,7 @@ const TeamDetails = () => {
                     </p>
                 </div>
             ) : (
-                <p>Carregando informações do time...</p>
+                <LoadingSpinner />
             )}
         </div>
     );

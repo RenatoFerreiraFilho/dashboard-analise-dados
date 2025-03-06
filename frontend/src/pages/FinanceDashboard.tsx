@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./FinanceDashboard.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const FinanceDashboard = () => {
     const navigate = useNavigate();
@@ -14,7 +15,6 @@ const FinanceDashboard = () => {
         axios
             .get(`https://api.exchangerate-api.com/v4/latest/${baseCurrency}`)
             .then((response) => {
-                console.log(data);
                 const rates = response.data.rates;
                 const formattedData = Object.entries(rates).map(([currency, value]) => ({
                     name: currency,
@@ -54,7 +54,7 @@ const FinanceDashboard = () => {
                 </select>
             </div>
 
-            {loading && <p>Carregando dados...</p>}
+            {loading && <LoadingSpinner />}
             {error && <p>{error}</p>}
 
             {!loading && !error && (

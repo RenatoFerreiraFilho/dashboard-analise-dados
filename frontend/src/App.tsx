@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import FinanceDashboard from "./pages/FinanceDashboard";
 import WeatherDashboard from "./pages/WeatherDashboard";
@@ -11,9 +11,12 @@ import TeamDetails from "./pages/TeamDetails";
 import Login from "./pages/Login";
 import UserMenu from "./components/UserMenu";
 import axios from "axios";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const App = () => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -27,13 +30,20 @@ const App = () => {
         }
     }, []);
 
+    // useEffect(() => {
+    //     setLoading(true);
+    //     const timer = setTimeout(() => setLoading(false), 200);
+    //     return () => clearTimeout(timer);
+    // }, [location]);
+
     const handleLogout = () => {
         localStorage.removeItem("token");
         setUser(null);
     };
 
     return (
-        <Router>
+        <>
+            {loading && <LoadingSpinner />}
             {user && <UserMenu user={user} onLogout={handleLogout} />}
             <Routes>
                 <Route path="/login" element={<Login setUser={setUser} />} />
@@ -46,7 +56,7 @@ const App = () => {
                 <Route path="/leagues/:leagueId" element={user ? <LeagueDetails /> : <Navigate to="/login" />} />
                 <Route path="/teams/:teamName" element={user ? <TeamDetails /> : <Navigate to="/login" />} />
             </Routes>
-        </Router>
+        </>
     );
 };
 

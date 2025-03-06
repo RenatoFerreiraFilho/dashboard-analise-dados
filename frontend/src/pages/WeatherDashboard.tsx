@@ -89,6 +89,7 @@ const WeatherDashboard = () => {
             <div className="search-container">
                 <input type="text" placeholder="Digite uma cidade..." value={city} onChange={(e) => setCity(e.target.value)} />
                 <button
+                    className="search-btn-wt"
                     onClick={() => {
                         fetchWeatherData(city);
                         fetchForecastData(city);

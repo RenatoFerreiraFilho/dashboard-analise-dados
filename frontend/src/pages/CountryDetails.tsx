@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import "./CountryDetails.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const CountryDetails = () => {
     const { countryCode } = useParams(); // Obtém o código do país na URL
@@ -17,7 +18,7 @@ const CountryDetails = () => {
     }, [countryCode]);
 
     if (!country) {
-        return <div className="loading">Carregando...</div>;
+        return <LoadingSpinner />;
     }
 
     // Cálculo de densidade populacional
