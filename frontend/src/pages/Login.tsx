@@ -42,9 +42,15 @@ const Login = ({ setUser }) => {
                 <form onSubmit={handleLogin}>
                     <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                    <button type="submit">Entrar</button>
+                    <button className="login-button" type="submit">
+                        Entrar
+                    </button>
                 </form>
                 {error && <p className="error">{error}</p>}
+                <p>Ainda não tem uma conta?</p>
+                <button className="register-button" onClick={() => navigate("/register")}>
+                    Criar Conta
+                </button>
             </div>
         </div>
     );

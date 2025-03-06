@@ -17,7 +17,7 @@ const UserMenu = ({ user, onLogout }) => {
             {isOpen && (
                 <div className="user-menu-dropdown">
                     <p>
-                        <strong>{user.name}</strong>
+                        <strong>{user.username}</strong>
                     </p>
                     <p>{user.email}</p>
                     <button className="logout-button" onClick={onLogout}>

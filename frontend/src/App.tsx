@@ -9,6 +9,7 @@ import LeaguesMenu from "./pages/LeaguesMenu";
 import LeagueDetails from "./pages/LeagueDetails";
 import TeamDetails from "./pages/TeamDetails";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import UserMenu from "./components/UserMenu";
 import axios from "axios";
 import LoadingSpinner from "./components/LoadingSpinner";
@@ -47,6 +48,7 @@ const App = () => {
             {user && <UserMenu user={user} onLogout={handleLogout} />}
             <Routes>
                 <Route path="/login" element={<Login setUser={setUser} />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
                 <Route path="/finance" element={user ? <FinanceDashboard /> : <Navigate to="/login" />} />
                 <Route path="/weather" element={user ? <WeatherDashboard /> : <Navigate to="/login" />} />

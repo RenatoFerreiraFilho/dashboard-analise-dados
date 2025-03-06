@@ -1,0 +1,53 @@
+.register-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("/images/login-background.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.register-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+input {
+    width: 90%;
+    max-width: 350px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: white;
+}
+
+/* ✅ Botão de Registro */
+.register-submit {
+    width: 100%;
+    max-width: 350px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.register-submit:hover {
+    background-color: darkgreen;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: lightgreen;
+}
