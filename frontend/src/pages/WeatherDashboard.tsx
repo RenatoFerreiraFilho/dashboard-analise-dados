@@ -78,9 +78,12 @@ const WeatherDashboard = () => {
 
     return (
         <div className="weather-dashboard" style={{ backgroundImage: `url(${backgroundImage})` }}>
-            <button className="back-button" onClick={() => navigate("/")}>
-                ⬅ Voltar
-            </button>
+            <div className="weather-back-container">
+                <button className="weather-back-button" onClick={() => navigate("/")}>
+                    ⬅ Voltar
+                </button>
+            </div>
+
             <h1>🌍 Clima Global</h1>
 
             <div className="search-container">

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import "./CountryDetails.css";
 
 const CountryDetails = () => {
     const { countryCode } = useParams(); // Obtém o código do país na URL
+    const navigate = useNavigate();
     const [country, setCountry] = useState(null);
 
     useEffect(() => {
@@ -24,9 +25,11 @@ const CountryDetails = () => {
 
     return (
         <div className="country-details">
-            <button className="back-button" onClick={() => window.history.back()}>
-                ⬅ Voltar
-            </button>
+            <div className="countryd-back-container">
+                <button className="countryd-back-button" onClick={() => navigate(-1)}>
+                    ⬅ Voltar
+                </button>
+            </div>
 
             <h1>{country.name.common}</h1>
             <img src={country.flags.svg} alt={`Bandeira de ${country.name.common}`} className="flag" />

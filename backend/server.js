@@ -27,10 +27,6 @@ app.get("/api/protected", verifyToken, (req, res) => {
     res.json({ message: "Acesso autorizado a rota protegida!", user: req.user });
 });
 
-// Rota de upload de arquivos
-const uploadRoutes = require("./routes/upload");
-app.use("/api", uploadRoutes);
-
 app.get("/", (req, res) => {
     res.send("API do Dashboard rodando 🚀");
 });

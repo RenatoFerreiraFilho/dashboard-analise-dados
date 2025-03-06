@@ -72,4 +72,16 @@ const verifyToken = (req, res, next) => {
     }
 };
 
+// Endpoint para obter informações do usuário autenticado
+router.get("/me", verifyToken, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.userId).select("-password"); // Retorna dados sem a senha
+        if (!user) return res.status(404).json({ error: "Usuário não encontrado!" });
+
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao buscar dados do usuário" });
+    }
+});
+
 module.exports = { authRouter: router, verifyToken };

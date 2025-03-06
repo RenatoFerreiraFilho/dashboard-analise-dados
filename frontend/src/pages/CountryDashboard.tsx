@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./CountryDashboard.css";
 
 const CountryDashboard = () => {
+    const navigate = useNavigate();
     const [countries, setCountries] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredCountries, setFilteredCountries] = useState([]);
@@ -28,9 +29,11 @@ const CountryDashboard = () => {
 
     return (
         <div className="country-dashboard">
-            <button className="back-button" onClick={() => window.history.back()}>
-                ⬅ Voltar
-            </button>
+            <div className="country-back-container">
+                <button className="country-back-button" onClick={() => navigate("/")}>
+                    ⬅ Voltar
+                </button>
+            </div>
 
             <h1>Dashboard de Países 🌍</h1>
 
