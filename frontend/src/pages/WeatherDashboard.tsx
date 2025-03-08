@@ -21,7 +21,7 @@ const weatherBackgrounds: { [key: string]: string } = {
 };
 
 const WeatherDashboard = () => {
-    const [city, setCity] = useState("São Paulo");
+    const [city, setCity] = useState("Curitiba");
     const [weatherData, setWeatherData] = useState<any>(null);
     const [forecastData, setForecastData] = useState<any[]>([]);
     const navigate = useNavigate();
@@ -88,15 +88,6 @@ const WeatherDashboard = () => {
 
             <div className="search-container">
                 <input type="text" placeholder="Digite uma cidade..." value={city} onChange={(e) => setCity(e.target.value)} />
-                <button
-                    className="search-btn-wt"
-                    onClick={() => {
-                        fetchWeatherData(city);
-                        fetchForecastData(city);
-                    }}
-                >
-                    🔍 Buscar
-                </button>
             </div>
 
             {weatherData && (
