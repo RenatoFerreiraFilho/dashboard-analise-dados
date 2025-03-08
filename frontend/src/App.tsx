@@ -31,12 +31,6 @@ const App = () => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     setLoading(true);
-    //     const timer = setTimeout(() => setLoading(false), 200);
-    //     return () => clearTimeout(timer);
-    // }, [location]);
-
     const handleLogout = () => {
         localStorage.removeItem("token");
         setUser(null);

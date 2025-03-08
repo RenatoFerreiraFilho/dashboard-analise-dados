@@ -3,31 +3,70 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const sendVerificationEmail = require("../utils/emailService");
 
 const secretKey = process.env.JWT_SECRET;
 
-// Endpoint de registro de novo usuário
+const generateVerificationCode = () => Math.floor(100000 + Math.random() * 900000).toString();
+
 router.post("/register", async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        // Verifica se o usuário já existe
         const existingUser = await User.findOne({ email });
+
         if (existingUser) {
-            return res.status(400).json({ error: "Usuário já existe!" });
+            if (existingUser.isVerified) {
+                return res.status(400).json({ error: "Usuário já existe!" });
+            } else {
+                // Se o usuário não verificou o e-mail, gere um novo código e reenvie
+                const verificationCode = generateVerificationCode();
+                existingUser.verificationCode = verificationCode;
+                await existingUser.save();
+
+                await sendVerificationEmail(email, verificationCode); // 🔹 Reenvia o e-mail
+
+                return res.status(200).json({ message: "Novo código de verificação enviado para o seu e-mail!" });
+            }
         }
 
-        // Gera o hash da senha
+        // Criar um novo usuário caso ele ainda não exista
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Cria e salva o novo usuário
-        const newUser = new User({ username, email, password: hashedPassword });
+        const verificationCode = generateVerificationCode();
+
+        const newUser = new User({ username, email, password: hashedPassword, verificationCode });
         await newUser.save();
 
-        res.status(201).json({ message: "Usuário registrado com sucesso!" });
+        await sendVerificationEmail(email, verificationCode);
+
+        res.status(201).json({ message: "Cadastro realizado! Verifique seu e-mail." });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Erro ao registrar usuário" });
+    }
+});
+
+// Endpoint para verificar o código de ativação
+router.post("/verify-email", async (req, res) => {
+    try {
+        const { email, code } = req.body;
+
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json({ error: "Usuário não encontrado!" });
+
+        if (user.isVerified) return res.status(400).json({ error: "E-mail já verificado!" });
+
+        if (user.verificationCode !== code) return res.status(400).json({ error: "Código inválido!" });
+
+        user.isVerified = true;
+        user.verificationCode = null; // 🔹 Remove o código após a verificação
+        await user.save();
+
+        res.json({ message: "E-mail verificado com sucesso!" });
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao verificar e-mail" });
     }
 });
 
@@ -36,18 +75,16 @@ router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Verifica se o usuário existe
         const user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ error: "Usuário não encontrado!" });
+        if (!user) return res.status(400).json({ error: "Usuário ou senha incorretos!" });
 
-        // Compara a senha enviada com a senha armazenada
+        if (!user.isVerified) return res.status(400).json({ error: "E-mail não verificado! Verifique seu e-mail antes de fazer login." });
+
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ error: "Senha inválida!" });
+        if (!isMatch) return res.status(400).json({ error: "Usuário ou senha incorretos!" });
 
-        // Cria o payload do token
         const payload = { userId: user._id, email: user.email };
 
-        // Gera o token com expiração de 1 hora
         const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
 
         res.json({ token });
