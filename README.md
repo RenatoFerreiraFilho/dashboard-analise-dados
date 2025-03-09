@@ -16,19 +16,6 @@
 
 ---
 
-## 🖥️ **Demonstração**
-
-📍 **Live Demo:** [Coloque aqui o link da aplicação hospedada, se disponível]
-
-**Dashboard em ação:**  
-🚀 **Login e Registro de Usuários**  
-🌍 **Visualização de Estatísticas por País**  
-💰 **Análises Financeiras (Moedas e Câmbio)**  
-⚽ **Dados Esportivos (Ligas e Times)**  
-🌦️ **Previsão do Tempo por Cidade**
-
----
-
 ## 🔧 **Tecnologias Utilizadas**
 
 ### **Frontend**
@@ -79,11 +66,11 @@ EMAIL_PASS=sua_senha_de_app
 
 Crie um arquivo `.env.local` dentro da pasta `frontend/` e adicione:
 
-````env
+```env
 VITE_WEATHER_API_KEY=sua_chave
 VITE_SPORTS_API_KEY=sua_chave
 VITE_API_BASE_URL=http://localhost:[sua_porta]
-
+```
 
 ### **Passo 3 - Instalar dependências**
 
@@ -93,7 +80,7 @@ VITE_API_BASE_URL=http://localhost:[sua_porta]
 cd backend
 npm install
 npm start
-````
+```
 
 #### Frontend
 
@@ -142,8 +129,7 @@ http://localhost:[sua_porta]
 
 👋 Criado por **Renato Ferreira**  
 📧 Contato: [renatoaferreirafilho@gmail.com](mailto:renatoaferreirafilho@gmail.com)  
-💼 LinkedIn: [linkedin.com/in/renato-ferreira-fullstack](https://linkedin.com/in/renato-ferreira-fullstack)  
-🚀 Portfólio: [seu-portfolio.com](https://seu-portfolio.com)
+💼 LinkedIn: [linkedin.com/in/renato-ferreira-fullstack](https://linkedin.com/in/renato-ferreira-fullstack)
 
 ---
 
