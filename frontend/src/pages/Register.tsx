@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Register.css";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Register = () => {
     const [step, setStep] = useState(1); // 1 = Cadastro, 2 = Verificação do código
     const [username, setUsername] = useState("");
@@ -20,7 +22,7 @@ const Register = () => {
         setSuccess("");
 
         try {
-            const response = await axios.post("http://localhost:4000/api/auth/register", {
+            const response = await axios.post(`${API_BASE_URL}/api/auth/register`, {
                 username,
                 email,
                 password,
@@ -40,7 +42,7 @@ const Register = () => {
         setSuccess("");
 
         try {
-            await axios.post("http://localhost:4000/api/auth/verify-email", {
+            await axios.post(`${API_BASE_URL}/api/auth/verify-email`, {
                 email,
                 code: verificationCode,
             });
