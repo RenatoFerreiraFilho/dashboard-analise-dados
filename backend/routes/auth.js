@@ -24,7 +24,7 @@ router.post("/register", async (req, res) => {
                 existingUser.verificationCode = verificationCode;
                 await existingUser.save();
 
-                await sendVerificationEmail(email, verificationCode); // 🔹 Reenvia o e-mail
+                await sendVerificationEmail(email, verificationCode); // Reenvia o e-mail
 
                 return res.status(200).json({ message: "Novo código de verificação enviado para o seu e-mail!" });
             }
@@ -61,7 +61,7 @@ router.post("/verify-email", async (req, res) => {
         if (user.verificationCode !== code) return res.status(400).json({ error: "Código inválido!" });
 
         user.isVerified = true;
-        user.verificationCode = null; // 🔹 Remove o código após a verificação
+        user.verificationCode = null; // Remove o código após a verificação
         await user.save();
 
         res.json({ message: "E-mail verificado com sucesso!" });

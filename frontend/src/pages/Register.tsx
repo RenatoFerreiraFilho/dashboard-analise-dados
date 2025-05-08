@@ -15,7 +15,6 @@ const Register = () => {
     const [success, setSuccess] = useState("");
     const navigate = useNavigate();
 
-    // ✅ Função para enviar os dados de cadastro
     const handleRegister = async (e) => {
         e.preventDefault();
         setError("");
@@ -28,14 +27,13 @@ const Register = () => {
                 password,
             });
 
-            setSuccess(response.data.message); // Exibe mensagem personalizada do backend
+            setSuccess(response.data.message);
             setTimeout(() => setStep(2), 3000);
         } catch (err) {
             setError(err.response?.data?.error || "Erro ao cadastrar. Tente novamente.");
         }
     };
 
-    // ✅ Função para verificar o código enviado por e-mail
     const handleVerifyCode = async (e) => {
         e.preventDefault();
         setError("");
@@ -58,7 +56,6 @@ const Register = () => {
         <div className="register-container">
             <div className="register-overlay">
                 {step === 1 ? (
-                    // 📌 Etapa 1: Cadastro do usuário
                     <>
                         <h2>Cadastro</h2>
                         <form onSubmit={handleRegister}>
@@ -73,7 +70,6 @@ const Register = () => {
                         {success && <p className="success">{success}</p>}
                     </>
                 ) : (
-                    // 📌 Etapa 2: Inserir código de verificação
                     <>
                         <h2>Verificação de E-mail</h2>
                         <p>Insira o código enviado para {email}:</p>

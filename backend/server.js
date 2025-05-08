@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔹 Conexão com o MongoDB
+// Conexão com o MongoDB
 const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
@@ -15,8 +15,8 @@ mongoose
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-    .then(() => console.log("✅ Conectado ao MongoDB Atlas!"))
-    .catch((err) => console.error("❌ Erro ao conectar ao MongoDB Atlas:", err));
+    .then(() => console.log("Conectado ao MongoDB Atlas!"))
+    .catch((err) => console.error("Erro ao conectar ao MongoDB Atlas:", err));
 
 // Rotas de autenticação
 const { authRouter, verifyToken } = require("./routes/auth");
@@ -28,7 +28,7 @@ app.get("/api/protected", verifyToken, (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    res.send("API do Dashboard rodando 🚀");
+    res.send("API do Dashboard rodando");
 });
 
 const PORT = process.env.PORT || 4000;

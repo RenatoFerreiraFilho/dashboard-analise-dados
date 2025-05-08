@@ -1,10 +1,10 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-    service: "gmail", // Você pode usar outros serviços como SMTP
+    service: "gmail",
     auth: {
-        user: process.env.EMAIL_USER, // Seu e-mail
-        pass: process.env.EMAIL_PASS, // Senha ou App Password (se for Gmail)
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
     },
 });
 
@@ -51,14 +51,19 @@ const sendVerificationEmail = async (email, code) => {
     </body>
     </html>`;
 
-    await transporter.sendMail({
-        from: '"QuantumBoard" <seuemail@gmail.com>',
-        to: email,
-        subject: "Seu Código de Verificação",
-        html: emailTemplate,
-    });
+    try {
+        const response = await transporter.sendMail({
+            from: '"QuantumBoard" <quantumboard0001@gmail.com>',
+            to: email,
+            subject: "Seu Código de Verificação",
+            html: emailTemplate,
+        });
 
-    console.log("Email enviado com sucesso!");
+        console.log("Email enviado com sucesso!", response.messageId || response);
+    } catch (error) {
+        console.error("Erro ao enviar o e-mail:", error.message || error);
+        throw new Error("Erro ao enviar o e-mail de verificação. Tente novamente mais tarde.");
+    }
 };
 
 module.exports = sendVerificationEmail;

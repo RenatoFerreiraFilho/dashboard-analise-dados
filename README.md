@@ -129,7 +129,7 @@ http://localhost:[sua_porta]
 
 👋 Criado por **Renato Ferreira**  
 📧 Contato: [renatoaferreirafilho@gmail.com](mailto:renatoaferreirafilho@gmail.com)  
-💼 LinkedIn: [linkedin.com/in/renato-ferreira-fullstack](https://linkedin.com/in/renato-ferreira-fullstack)
+💼 LinkedIn: [linkedin.com/in/renato-ferreira-fullstack](https://linkedin.com/in/ferreira-filho-renato)
 
 ---
 
